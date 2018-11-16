@@ -8,6 +8,7 @@ const { PORT, CLIENT_ORIGIN } = require('./config');
 const { dbConnect } = require('./db-mongoose');
 // const {dbConnect} = require('./db-knex');
 
+const {catData, dogData} = require('./animalData');
 const app = express();
 
 app.use(
@@ -21,6 +22,14 @@ app.use(
     origin: CLIENT_ORIGIN
   })
 );
+
+app.get('/api/cat', (req, res, next) => {
+  res.json(catData);  
+});
+
+app.get('/api/dog', (req, res, next) => {
+  res.json(dogData);  
+});
 
 function runServer(port = PORT) {
   const server = app
