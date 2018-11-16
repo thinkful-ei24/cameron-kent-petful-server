@@ -1,4 +1,7 @@
-const catData = [
+const Queue = require('./queue');
+
+
+const addCatData = [
   {
     imageURL: 'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
     imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
@@ -28,7 +31,7 @@ const catData = [
   }
 ];
 
-const dogData = [
+const addDogData = [
   {
     imageURL: 'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
     imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
@@ -57,5 +60,10 @@ const dogData = [
     story: 'Too cute for previous owners'
   }
 ];
+
+const catData = new Queue;
+addCatData.forEach(item => catData.enqueue(item));
+const dogData = new Queue;
+addDogData.forEach(item => dogData.enqueue(item));
 
 module.exports = { catData, dogData };

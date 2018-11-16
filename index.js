@@ -24,20 +24,20 @@ app.use(
 );
 
 app.get('/api/cat', (req, res, next) => {
-  res.json(catData[0]);  
+  res.json(catData.peek()); 
 });
 
 app.delete('/api/cat', (req, res, next) => {
-  catData.shift();
+  catData.dequeue();
   res.sendStatus(204);  
 });
 
 app.get('/api/dog', (req, res, next) => {
-  res.json(dogData[0]);  
+  res.json(dogData.peek());  
 });
 
 app.delete('/api/dog', (req, res, next) => {
-  dogData.shift();
+  dogData.dequeue();
   res.sendStatus(204);  
 });
 
