@@ -24,11 +24,21 @@ app.use(
 );
 
 app.get('/api/cat', (req, res, next) => {
-  res.json(catData);  
+  res.json(catData[0]);  
+});
+
+app.delete('/api/cat', (req, res, next) => {
+  catData.shift();
+  res.sendStatus(204);  
 });
 
 app.get('/api/dog', (req, res, next) => {
-  res.json(dogData);  
+  res.json(dogData[0]);  
+});
+
+app.delete('/api/dog', (req, res, next) => {
+  dogData.shift();
+  res.sendStatus(204);  
 });
 
 function runServer(port = PORT) {
